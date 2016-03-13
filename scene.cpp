@@ -301,6 +301,7 @@ void SceneMain::update()
             updateHiscore();
         }
         if (wave_ > waveMax_) {
+            waveMax_ = wave_;
             updateWaveMax();
         }
         addScene(new SceneGameOver(score_));
@@ -313,6 +314,7 @@ void SceneMain::update()
                 updateHiscore();
             }
             if (wave_ > waveMax_) {
+                waveMax_ = wave_;
                 updateWaveMax();
             }
             addScene(new SceneClear(score_));
