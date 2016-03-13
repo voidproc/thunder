@@ -16,6 +16,8 @@ const int POWER_AUTO_RECOVER = 3;
 const int LIFE_MAX = 100;
 // ダメージ時無敵時間[frame]
 const int DAMAGE_INV_TIME = 80;
+// 無敵になるまでの無入力時間[frame]
+const int NOINPUT_INV_TIME = 40;
 
 
 // 引数として
@@ -487,7 +489,15 @@ void Player::update()
 
     // 入力が一定期間なければ無敵に
     if (dir_x || dir_y || Input::KeySpace.pressed) { intputFreeTime_ = 0; }
-    collidable_ = (intputFreeTime_++ < 16);
+    if (intputFreeTime_++ < NOINPUT_INV_TIME) {
+        collidable_ = true;
+    }
+    else {
+        //無敵だがライフが減る
+        collidable_ = false;
+        if (frame() % 40 == 0)
+            life_ = Clamp(life_ - 1, 0, LIFE_MAX);
+    }
 
     // ダメージを受けたら無敵に
     collidable_ = collidable_ && (damageInvTime_ == 0);
