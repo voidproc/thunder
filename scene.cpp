@@ -145,13 +145,18 @@ void SceneMain::checkEnemyCollision()
 
 void SceneMain::updateHiscore()
 {
-    INIWriter ini(L"hiscore.ini");
-    ini.write(L"THUNDER.hiscore", score_);
+    hiscore_ = score_;
 }
 
 void SceneMain::updateWaveMax()
 {
+    waveMax_ = wave_;
+}
+
+void SceneMain::writeINI()
+{
     INIWriter ini(L"hiscore.ini");
+    ini.write(L"THUNDER.hiscore", score_);
     ini.write(L"THUNDER.wave", waveMax_);
 }
 
@@ -301,9 +306,9 @@ void SceneMain::update()
             updateHiscore();
         }
         if (wave_ > waveMax_) {
-            waveMax_ = wave_;
             updateWaveMax();
         }
+        writeINI();
         addScene(new SceneGameOver(score_));
     }
 
@@ -314,9 +319,9 @@ void SceneMain::update()
                 updateHiscore();
             }
             if (wave_ > waveMax_) {
-                waveMax_ = wave_;
                 updateWaveMax();
             }
+            writeINI();
             addScene(new SceneClear(score_));
         }
     }

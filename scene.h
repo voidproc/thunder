@@ -76,8 +76,9 @@ private:
     void updateWave();            // 現在のフレームカウンタに応じてWAVEを設定する
     void checkPlayerCollision();  // プレイヤーがなにかに衝突する判定
     void checkEnemyCollision();   // 敵がウエポンに衝突する判定
-    void updateHiscore();         // ハイスコア記録ファイルを更新する
+    void updateHiscore();         // ハイスコアを更新する
     void updateWaveMax();         // 最終到達WAVEを更新する
+    void writeINI();              // ハイスコア等記録ファイルに書き込む
     Player* player();
 
     int frame_;
