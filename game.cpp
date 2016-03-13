@@ -22,6 +22,8 @@ void initGraphics()
 
 void Main()
 {
+    Window::SetTitle(L"THUNDER #Siv3DGameJam");
+
     // 普段の描画先：最後にSCALE倍する
     RenderTexture render_texture{ SCREEN_SIZE, Palette::Black };
 
