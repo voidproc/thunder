@@ -22,7 +22,7 @@ Siv3D Game Jam 第二回 テーマ「雲」の投稿作品です．
 ![ss2](https://github.com/voidproc/thunder/wiki/img/ss2.png)
 
 ## ダウンロード
-<https://github.com/voidproc/thunder/releases/download/1.0/thunder.zip> (x64版)
+<https://github.com/voidproc/thunder/releases/download/v1.0/thunder.zip> (x64版)
 
 ## 開発／動作環境
 * Windows 7 SP1 64bit
